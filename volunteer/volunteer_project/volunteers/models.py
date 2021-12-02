@@ -5,7 +5,8 @@ class Volunteer(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField()
-    curriculum_vitae = models.FileField(upload_to=None)
+    curriculum_vitae = models.FileField(upload_to='CV')
+    jobs = models.ManyToManyField("jobs.Job")
 
     def __str__(self):
-        return 'Volunteer' + self.name
+        return 'Volunteer: ' + self.name

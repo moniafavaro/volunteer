@@ -1,4 +1,3 @@
-from django.db.models.base import Model
 from django.db import models
 
 class Company(models.Model):
@@ -7,4 +6,4 @@ class Company(models.Model):
     phone_number = models.IntegerField()
 
     def __str__(self):
-        return "Company" + self.name
+        return "Company: " + self.name
