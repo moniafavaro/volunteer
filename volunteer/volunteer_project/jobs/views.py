@@ -34,7 +34,7 @@ class JobListView(APIView):
         request.data['company'] = request.user.id
         job = JobSerializer(data=request.data)
         if job.is_valid():
-            job.save()
+            job.save(company=request.user)
             return Response(job.data, status=status.HTTP_201_CREATED)
         else:
             return Response(job.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)

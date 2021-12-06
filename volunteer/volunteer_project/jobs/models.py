@@ -5,6 +5,7 @@ class Job(models.Model):
     hours_per_day = models.IntegerField()
     address = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
+    created_at = models.DateTimeField(auto_now_add=True)
     company = models.ForeignKey("companies.Company", on_delete=models.CASCADE)
 
     def __str__(self):
