@@ -20,16 +20,18 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 class LoginView(APIView):
-    def get_user(self, email):
+    def get_user(self, username):
         try:
-            return User.objects.get(email=email)
+            return User.objects.get(username=username)
         except User.DoesNotExist:
             raise PermissionDenied({'message', 'Invalid credentials'})
 
     def post(self, request):
-        email = request.data.get('email')
+        print('request --->', request)
+        username = request.data.get('username')
         password = request.data.get('password')
-        user = self.get_user(email)
+        print('')
+        user = self.get_user(username)
 
         if not user.check_password(password):
             raise PermissionDenied({'message': 'Invalid credentials'})

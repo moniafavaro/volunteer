@@ -1,5 +1,5 @@
 import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
-import logo from "../other/logo-01.png";
+import logo from "../images/logo-01.png";
 import React from "react";
 
 function Register() {

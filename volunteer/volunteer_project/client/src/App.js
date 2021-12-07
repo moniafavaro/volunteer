@@ -16,7 +16,7 @@ import VolunteerHome from "./pages/VolunteerHome";
 function App() {
   React.useEffect(() => {
     const getData = async () => {
-      const res = await axios.get("/api/register/");
+      const res = await axios.get("/api/login");
       console.log(res.data);
     };
     getData();
