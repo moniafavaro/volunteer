@@ -32,7 +32,9 @@ const VolunteerProfile = () => {
 
     async function getData() {
       const tempVolunteer = await fetchVolunteerByUserId(getUserId());
-      setVolunteer(tempVolunteer[0]);
+      if (tempVolunteer.length > 0) {
+        setVolunteer(tempVolunteer[0]);
+      }
     }
   }, []);
 

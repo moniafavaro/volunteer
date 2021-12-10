@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Form, Button, Row } from "react-bootstrap";
-import { fetchVolunteerByUserId, updateVolunteer } from "../helpers/api";
+import {
+  addVolunteer,
+  fetchVolunteerByUserId,
+  updateVolunteer,
+} from "../helpers/api";
 import { getUserId } from "../helpers/auth";
 
 function VolunteerDetails() {
@@ -13,24 +17,38 @@ function VolunteerDetails() {
   });
 
   const [volunteerId, setVolunteerId] = useState();
+  const [isNew, setIsNew] = useState(false);
 
   useEffect(() => {
     getData();
 
     async function getData() {
       const tempVolunteer = await fetchVolunteerByUserId(getUserId());
-      setVolunteerId(tempVolunteer[0].id);
-      setVolunteer(tempVolunteer[0]);
+      if (tempVolunteer.length > 0) {
+        setVolunteerId(tempVolunteer[0].id);
+        setVolunteer(tempVolunteer[0]);
+        setIsNew(false);
+      } else {
+        setIsNew(true);
+      }
     }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    delete volunteer["jobs"];
-    delete volunteer["id"];
-    delete volunteer["user_id"];
-    updateVolunteer(volunteerId, volunteer);
-    // window.location.reload();
+    if (isNew) {
+      const userId = getUserId();
+      volunteer.user_id = parseInt(userId);
+      delete volunteer["jobs"];
+      console.log(volunteer);
+      addVolunteer(volunteer);
+    } else {
+      delete volunteer["jobs"];
+      delete volunteer["id"];
+      delete volunteer["user_id"];
+      updateVolunteer(volunteerId, volunteer);
+    }
+    window.location.reload();
   };
 
   const onInputChange = (e) => {

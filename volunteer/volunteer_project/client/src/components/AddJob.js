@@ -22,6 +22,7 @@ const AddJob = () => {
     data.company = company[0].id;
     addJob(data);
     navigate("/companyhome");
+    window.location.reload();
   };
 
   const handleFormChange = (e) => {

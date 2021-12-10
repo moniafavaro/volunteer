@@ -8,7 +8,11 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { fetchCompanyByUserId, updateCompany } from "../helpers/api";
+import {
+  addCompany,
+  fetchCompanyByUserId,
+  updateCompany,
+} from "../helpers/api";
 import { getUserId } from "../helpers/auth";
 
 const CompanyProfile = () => {
@@ -21,6 +25,7 @@ const CompanyProfile = () => {
 
   const [show, setShow] = useState(false);
   const [companyId, setCompanyId] = useState();
+  const [isNew, setIsNew] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -30,17 +35,28 @@ const CompanyProfile = () => {
 
     async function getData() {
       const tempCompany = await fetchCompanyByUserId(getUserId());
-      setCompanyId(tempCompany[0].id);
-      setCompany(tempCompany[0]);
+      if (tempCompany.length > 0) {
+        setCompanyId(tempCompany[0].id);
+        setCompany(tempCompany[0]);
+        setIsNew(false);
+      } else {
+        setIsNew(true);
+      }
     }
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const userId = getUserId();
-    // company.user_id = parseInt(userId);
-    delete company["user_id"];
-    updateCompany(companyId, company);
+    if (isNew) {
+      const userId = getUserId();
+      company.user_id = parseInt(userId);
+      console.log("test -->", company);
+      addCompany(company);
+    } else {
+      delete company["user_id"];
+      updateCompany(companyId, company);
+    }
+    window.location.reload();
   };
 
   const handleFormChange = (e) => {

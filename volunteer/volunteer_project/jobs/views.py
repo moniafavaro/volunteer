@@ -53,6 +53,6 @@ class JobListView(APIView):
 
 class JobVolunteerView(APIView):
     def get(self, request, pk):
-        volunteers = Volunteer.objects.filter(id=pk)
+        volunteers = Volunteer.objects.filter(jobs__id=pk)
         serialized_volunteers = VolunteerSerializer(volunteers, many=True)
         return Response(serialized_volunteers.data, status=status.HTTP_200_OK)

@@ -52,7 +52,7 @@ const Register = ({ setIsLoggedIn }) => {
     if (radioType === "company") {
       navigate("/companyprofile");
     } else {
-      navigate("/volunteerhome");
+      navigate("/volunteerprofile");
     }
   };
 
