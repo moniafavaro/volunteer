@@ -19,7 +19,7 @@ class VolunteerDetailView(APIView):
 
     def put(self, request, pk):
         volunteer = Volunteer.objects.get(id=pk)
-        updated_volunteer = VolunteerSerializer(volunteer, data=request.data)
+        updated_volunteer = VolunteerSerializer(volunteer, data=request.data, partial=True)
         if updated_volunteer.is_valid():
             updated_volunteer.save()
             return Response(updated_volunteer.data, status=status.HTTP_202_ACCEPTED)
@@ -35,15 +35,23 @@ class VolunteerListView(APIView):
     def post(self, request):
         volunteer = VolunteerSerializer(data=request.data)
         if volunteer.is_valid():
+            # maybe use request.user
             volunteer.save()
             return Response(volunteer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(volunteer.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def get(self, request):
-        volunteers = Volunteer.objects.all()
-        serialized_volunteers = VolunteerSerializer(volunteers, many=True)
-        return Response(serialized_volunteers.data, status=status.HTTP_200_OK)
+        params = request.GET
+        if 'userId' in params.keys():
+            user_id = params['userId']
+            volunteers = Volunteer.objects.filter(user_id=user_id)
+            serialized_volunteers = VolunteerSerializer(volunteers, many=True)
+            return Response(serialized_volunteers.data, status=status.HTTP_200_OK)
+        else:
+            volunteers = Volunteer.objects.all()
+            serialized_volunteers = VolunteerSerializer(volunteers, many=True)
+            return Response(serialized_volunteers.data, status=status.HTTP_200_OK)
 
 class VolunteerJobView(APIView):
     def get(self, request, pk):

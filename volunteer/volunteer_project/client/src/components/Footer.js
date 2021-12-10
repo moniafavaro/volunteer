@@ -5,7 +5,7 @@ import LinkedinLogo from "../images/linkedin-logo.png";
 
 const Footer = () => {
   return (
-    <Card.Footer className="text-center">
+    <Card.Footer className="text-center fixed-bottom">
       <Card.Text>
         Created by Monia Favaro{" "}
         <a

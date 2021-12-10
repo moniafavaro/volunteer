@@ -1,4 +1,10 @@
-$bg: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Vast+Shadow&display=swap");
+$bg: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(225, 236, 213) 100%);
+
+.main-body {
+  font-family: "Roboto Mono", monospace;
+  background: white;
+}
 
 .bg-custom-nav {
   background: $bg;
@@ -17,4 +23,15 @@ $bg: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
 .icon {
   background: url("../images/search_icon_.png") no-repeat 100%;
   background-size: 24px;
+}
+
+#login-card,
+#register-link,
+#register-card,
+#container-home,
+#company-profile,
+#volunteer-home,
+#volunteer-profile,
+#volunteer-home-02 {
+  background: white;
 }

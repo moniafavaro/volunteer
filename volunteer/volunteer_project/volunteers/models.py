@@ -1,11 +1,12 @@
 from django.db import models
-from django.db.models.base import Model
+from django.conf import settings
 
 class Volunteer(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     phone_number = models.IntegerField()
-    curriculum_vitae = models.FileField(upload_to='CV')
+    curriculum_vitae = models.CharField(max_length=1000, null=True)
+    user_id = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     jobs = models.ManyToManyField("jobs.Job")
 
     def __str__(self):

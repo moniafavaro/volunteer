@@ -14,15 +14,12 @@ class UserSerializer(serializers.ModelSerializer):
     def validate(self, data):
         password = data.pop('password')
         password_confirmation = data.pop('password_confirmation')
-
         if password != password_confirmation:
             raise serializers.ValidationError({'password_confirmation': 'Passwords do not match'})
-        
         try:
             validations.validate_password(password=password)
         except ValidationError as err:
             raise serializers.ValidationError({'password': err.messages})
-
         data['password'] = make_password(password)
         return data
 

@@ -19,7 +19,7 @@ class CompanyDetailView(APIView):
 
     def put(self, request, pk):
         company = Company.objects.get(id=pk)
-        updated_company = CompanySerializer(company, data=request.data)
+        updated_company = CompanySerializer(company, data=request.data, partial=True)
         if updated_company.is_valid():
             updated_company.save()
             return Response(updated_company.data, status=status.HTTP_202_ACCEPTED)
@@ -27,6 +27,7 @@ class CompanyDetailView(APIView):
             return Response(updated_company.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def get(self, request, pk):
+
         company = Company.objects.get(id=pk)
         serialized_company = CompanySerializer(company)
         return Response(serialized_company.data, status=status.HTTP_200_OK)
@@ -41,9 +42,16 @@ class CompanyListView(APIView):
             return Response(company.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def get(self, request):
-        companies = Company.objects.all()
-        serialized_companies = CompanySerializer(companies, many=True)
-        return Response(serialized_companies.data, status=status.HTTP_200_OK)
+        params = request.GET
+        if 'userId' in params.keys():
+            user_id = params['userId']
+            companies = Company.objects.filter(user_id=user_id)
+            serialized_companies = CompanySerializer(companies, many=True)
+            return Response(serialized_companies.data, status=status.HTTP_200_OK)
+        else:
+            companies = Company.objects.all()
+            serialized_companies = CompanySerializer(companies, many=True)
+            return Response(serialized_companies.data, status=status.HTTP_200_OK)
 
 class CompanyJobView(APIView):
     def get(self, request, pk):

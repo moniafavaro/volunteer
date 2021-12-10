@@ -1,15 +1,20 @@
-import { Card, Col, Container, Row, Form, Button } from "react-bootstrap";
+import { setToken, setUserId, setUsername } from "../helpers/auth";
+import { Card, Col, Container, Row, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/logo-01.png";
 import React, { useState } from "react";
-import { login } from "../helpers/api";
-import { setToken } from "../helpers/auth";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  fetchCompanyByUserId,
+  fetchVolunteerByUserId,
+  login,
+} from "../helpers/api";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setUserType }) => {
   const [data, setData] = useState({
     username: "",
     password: "",
   });
+
   const [errorInfo, setErrorInfo] = useState({});
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
@@ -20,15 +25,25 @@ const Login = ({ setIsLoggedIn }) => {
     login(data).then(handleSuccessfulLogin).catch(handleError);
   };
 
-  const handleSuccessfulLogin = (data) => {
-    setToken(data);
+  const handleSuccessfulLogin = async (e) => {
+    setToken(e.token);
+    setUsername(e.username);
+    setUserId(e.userId);
     setIsLoggedIn(true);
     setIsError(false);
-    navigate("/volunteerhome");
+
+    const company = await fetchCompanyByUserId(e.userId);
+
+    if (company.length > 0) {
+      navigate("/companyprofile");
+    } else {
+      navigate("/volunteerhome");
+    }
   };
 
   const handleError = (error) => {
     if (error.response) {
+      setErrorInfo(error.response.data);
       setIsError(true);
     }
   };
@@ -41,26 +56,16 @@ const Login = ({ setIsLoggedIn }) => {
     });
   };
 
-  const formInputProps = { data, errorInfo, handleFormChange };
+  const formInputProps = { data, errorInfo, onChange: handleFormChange };
 
   return (
-    <Container className="justify-content-center" style={{ display: "flex" }}>
+    <Container
+      className="justify-content-center mt-5"
+      style={{ display: "flex" }}
+    >
       <Row className="my-auto" style={{ width: "70%" }}>
-        <Col>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                rhoncus, orci non faucibus eleifend, lorem sem fermentum quam,
-                sit amet porta lorem nunc vitae nibh. Proin sed bibendum elit.
-                Nam sed lectus libero. Praesent hendrerit ipsum id sem
-                efficitur, vitae suscipit lectus lobortis.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
+        <Col className="mb-5">
+          <Card className="my-5 text-center" id="login-card">
             <Card.Body>
               <Form onSubmit={handleSubmit}>
                 <img
@@ -85,16 +90,23 @@ const Login = ({ setIsLoggedIn }) => {
                     {...formInputProps}
                   />
                 </Form.Group>
-                <Button type="submit" value="Login" variant="outline-success">
-                  Login
-                </Button>
-                <Link
-                  to="/register"
-                  className="justify-content-center"
-                  style={{ textDecoration: "none" }}
-                >
-                  Click here to register
-                </Link>
+                {isError ? (
+                  <Container className="error">
+                    <p>Error. Please try again</p>
+                  </Container>
+                ) : (
+                  <></>
+                )}
+                <Form.Control type="submit" value="Login" />
+                <Container className="mt-3 text-center" id="register-link">
+                  <Link
+                    to="/register"
+                    className="justify-content-center"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    Click here to register
+                  </Link>
+                </Container>
               </Form>
             </Card.Body>
           </Card>
@@ -105,10 +117,3 @@ const Login = ({ setIsLoggedIn }) => {
 };
 
 export default Login;
-
-//   {isError ? (
-//   <div className="error">
-//     <p>Error. PLease try again</p>
-//   </div>
-// ) : (
-//   <></>
