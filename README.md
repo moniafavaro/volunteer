@@ -1,4 +1,4 @@
-# Volunteer: Second solo project with GA
+## Volunteer: Second solo project with GA
 
 # Brief
 Design a website for volunteering jobs. A company can post jobs and a volunteer can apply for it. Timeframe: 1 week.
