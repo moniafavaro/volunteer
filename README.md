@@ -25,11 +25,8 @@ Once the wireframe was done I started with the pseudocode and decided what I wan
 ![register](https://user-images.githubusercontent.com/60261970/148087354-37e07b49-489f-4423-b691-e2244ce7fcf0.png)
 ![login](https://user-images.githubusercontent.com/60261970/148087371-a8e0aa21-fdfa-4302-93a1-a4521ef4b1aa.png)
 ![company-homepage](https://user-images.githubusercontent.com/60261970/148087425-3861bf98-a608-4a8f-a6f5-81c46a5a3412.png)
-![add-job](https://user-images.githubusercontent.com/60261970/148087436-388f7d1f-e9c8-4057-b53d-b01854509c80.png)
-![company-details](https://user-images.githubusercontent.com/60261970/148087447-1d77dbf0-d5cb-4a26-aa45-922b29a60694.png)
 
 ![pseudocode-backend](https://user-images.githubusercontent.com/60261970/148087483-605c390a-fce1-4857-9e83-e47aaf4b41cd.png)
-![pseudocode-frontend](https://user-images.githubusercontent.com/60261970/148087495-f1bee952-0953-409d-9588-7417e36212e1.png)
 
 This is the wireframe for one-to-many and many-to-many relationships:
 
@@ -43,7 +40,7 @@ The first pages that I added was the login and register:
 
 After that I did the home and profile page to the company and volunteer.
 
-That was my NVP.
+That was my MVP.
 
 # How to Use it
 
@@ -66,7 +63,7 @@ https://user-images.githubusercontent.com/60261970/148089011-df3e73ba-1381-4fe9-
 After that is up to the company to contact the volunteer and the volunteer to answer to the company.
 
 
-# Frameworks used
+# Frameworks Used
 
 * Python
 * Django
