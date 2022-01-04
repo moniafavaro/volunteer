@@ -10,7 +10,7 @@ Timeframe: 1 week.
 
 # Inspiration
 
-At the end of the course we all started to talk about finding a job, then I realized that I would like to do a volunteer job and will be very nice to go to a website with only volunteering jobs.
+At the end of the course we all started to talk about finding a job, then I realised that I would like to do a volunteer job and it would be very nice to go to a website with only volunteering jobs.
 
 The design was "inspired" by `indeed`.
 
@@ -52,7 +52,7 @@ https://user-images.githubusercontent.com/60261970/148088880-c9f9ee34-274f-476d-
 
 When you as a company go to the home page you are able to add opening jobs and/or close a job. You can also see all the volunteers that apply for a job.
 
-If you register as a volunteer and login you will be redirected to the volunteer profile, where you can add your informations like phone number and CV.
+If you register as a volunteer and login you will be redirected to the volunteer profile, where you can add your information like phone number and CV.
 
 https://user-images.githubusercontent.com/60261970/148088960-3ff74f6f-ba7a-4ba1-872d-324339bfc05c.mov
 
@@ -60,7 +60,7 @@ On the volunteer home page you can see all the open jobs and apply for then with
 
 https://user-images.githubusercontent.com/60261970/148089011-df3e73ba-1381-4fe9-a774-3e0f857c5b9d.mov
 
-After that is up to the company to contact the volunteer and the volunteer to answer to the company.
+After that it is up to the company to contact the volunteer and the volunteer to answer to the company.
 
 
 # Frameworks Used
@@ -78,7 +78,7 @@ After that is up to the company to contact the volunteer and the volunteer to an
 
 # Challenges
 
-Building a full stack application on your own for the first time is something to be proud. Problem solving and taking time to think through the errors has for sure given me some valuable experience prior to entering the industry.
+Building a full stack application on your own for the first time is something to be proud of. Problem solving and taking time to think through the errors has for sure given me some valuable experience prior to entering the industry.
 
 # Wins
 
