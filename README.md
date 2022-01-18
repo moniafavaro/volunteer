@@ -120,8 +120,8 @@ I really like frontend and styling, so this was my favourite part in this projec
     * This is how it looks like:
 
 <p align='center'>
-    <img width='400' height='260' src='https://user-images.githubusercontent.com/60261970/148087522-02f9eaf9-0285-43eb-b09e-b5dbc2f6120a.png'>
   <img width='400' height='260' src='https://user-images.githubusercontent.com/60261970/148087532-25815a2a-801d-48ab-967e-11467421e45e.png'>
+    <img width='400' height='260' src='https://user-images.githubusercontent.com/60261970/148087522-02f9eaf9-0285-43eb-b09e-b5dbc2f6120a.png'>
 </p>
 
 
