@@ -25,6 +25,28 @@ https://user-images.githubusercontent.com/60261970/149831611-3afd8d48-8161-49c2-
 
 to be done
 
+
+## How to Use it
+
+You are able to register as a company (who can post jobs) or as a volunteer (who can apply for jobs).
+
+If you register as a company and login you will be redirected to the company profile, where you can add the description of your company.
+
+https://user-images.githubusercontent.com/60261970/148088880-c9f9ee34-274f-476d-96c6-14ac8d75bccd.mov
+
+When you as a company go to the home page you are able to add opening jobs and/or close a job. You can also see all the volunteers that apply for a job.
+
+If you register as a volunteer and login you will be redirected to the volunteer profile, where you can add your information like phone number and CV.
+
+https://user-images.githubusercontent.com/60261970/148088960-3ff74f6f-ba7a-4ba1-872d-324339bfc05c.mov
+
+On the volunteer home page you can see all the open jobs and apply for them with just one click on the apply button.
+
+https://user-images.githubusercontent.com/60261970/148089011-df3e73ba-1381-4fe9-a774-3e0f857c5b9d.mov
+
+After that it is up to the company to contact the volunteer and the volunteer to answer to the company.
+
+
 # Getting Started
 
 1. Clone or download the repo in your CLI.
@@ -156,22 +178,3 @@ I really like frontend and styling, so this was my favourite part in this projec
 * One-to-many VS many-to-many relationships
 
 
-## How to Use it
-
-You are able to register as a company (who can post jobs) or as a volunteer (who can apply for jobs).
-
-If you register as a company and login you will be redirected to the company profile, where you can add the description of your company.
-
-https://user-images.githubusercontent.com/60261970/148088880-c9f9ee34-274f-476d-96c6-14ac8d75bccd.mov
-
-When you as a company go to the home page you are able to add opening jobs and/or close a job. You can also see all the volunteers that apply for a job.
-
-If you register as a volunteer and login you will be redirected to the volunteer profile, where you can add your information like phone number and CV.
-
-https://user-images.githubusercontent.com/60261970/148088960-3ff74f6f-ba7a-4ba1-872d-324339bfc05c.mov
-
-On the volunteer home page you can see all the open jobs and apply for them with just one click on the apply button.
-
-https://user-images.githubusercontent.com/60261970/148089011-df3e73ba-1381-4fe9-a774-3e0f857c5b9d.mov
-
-After that it is up to the company to contact the volunteer and the volunteer to answer to the company.
